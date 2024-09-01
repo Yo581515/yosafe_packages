@@ -8,7 +8,9 @@ packages = [{include = "yosafe_packages", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-
+yosafe-subpackage-1 = {git = "https://github.com/Yo581515/yosafe_subpackage_1.git"}
+yosafe-subpackage-2 = {git = "https://github.com/Yo581515/yosafe_subpackage_2.git"}
+yosafe-subpackage-3 = {git = "https://github.com/Yo581515/yosafe_subpackage_3.git"}
 
 [build-system]
 requires = ["poetry-core"]
