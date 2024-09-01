@@ -32,6 +32,8 @@ Once the subpackages are installed, you can import and use them in your Python c
 
 ```python
 # Example of using one of the subpackages
-from yosafe_subpackage_1 import some_module
+from yosafe_packages import yosafe_subpackage_1
+from yosafe_packages import yosafe_subpackage_2
+from yosafe_packages import yosafe_subpackage_3
 
 # Your code here
