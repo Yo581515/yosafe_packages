@@ -1,0 +1,87 @@
+name: yosafe_subpackage_1_workflow
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+
+
+jobs:
+  install-dependencies:
+    runs-on: ubuntu-latest
+
+    env:
+        GIT_NAME: ${{ secrets.GIT_NAME }}
+        GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+        POETRY_GITHUB_TOKKEN: ${{ secrets.POETRY_GITHUB_TOKKEN }}
+        YOSAFE_SUBPACKAGE_1_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_1_GITHUB_LINK }}
+        YOSAFE_SUBPACKAGE_2_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_2_GITHUB_LINK }}
+        YOSAFE_SUBPACKAGE_3_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_3_GITHUB_LINK }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+
+      
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+    - name: Install Poetry
+      run: |
+        python -m pip install --user pipx
+        python -m pipx ensurepath
+        pipx install poetry
+        poetry config virtualenvs.in-project true
+
+    - name: Set git user
+      run: |
+        git config --global user.name "${GIT_NAME}"
+        git config --global user.email "${GIT_EMAIL}"
+        git config --global user.password "${POETRY_GITHUB_TOKKEN}"
+
+
+    - name: Clone packages from github
+      run: |
+        cd src
+        cd yosafe_packages
+        git clone ${YOSAFE_SUBPACKAGE_1_GITHUB_LINK}
+        git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
+        git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
+        cd ..
+        cd ..
+    
+
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      id: cache
+      with:
+        path: ./.venv
+        key: venv-${{ hashFiles('**/poetry.lock') }}
+
+    - name: Install Poetry dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: |
+        poetry lock
+        poetry install
+
+
+    - name: Test with pytest
+      run: |
+        source .venv/bin/activate
+        pip list
+        poetry run pytest -s
