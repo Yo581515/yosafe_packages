@@ -93,4 +93,4 @@ jobs:
       run: |
         poetry build
         pip install setuptools wheel twine
-        twine upload dist/*
+        twine upload dist/yosafe_packages-0.1.0-py3-none-any.whl --username ${{ secrets.TWINE_USERNAME }} --password ${{ secrets.TWINE_PASSWORD }}
