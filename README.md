@@ -1,10 +1,17 @@
+
 # YoSafe Packages
 
-Welcome to the YoSafe Packages! This repository provides a collection of Python packages designed to enhance your development workflow. Below, you'll find instructions on how to install each package using Poetry.
+Welcome to the YoSafe Packages! This repository provides a collection of Python packages designed to enhance your development workflow. You can also find this project on PyPI: [YoSafe Packages on PyPI](https://pypi.org/project/yosafe-packages/).
 
 ## Installation
 
-To install the subpackages, please run the following commands:
+To install the main package directly from PyPI, use the following command:
+
+```bash
+pip install yosafe-packages
+```
+
+If you need to install the subpackages individually, please run the following commands using Poetry:
 
 1. **Install Subpackage 1**:
 
@@ -37,3 +44,13 @@ from yosafe_packages import yosafe_subpackage_2
 from yosafe_packages import yosafe_subpackage_3
 
 # Your code here
+```
+
+## Contact
+
+If you have any questions or need support, feel free to reach out:
+
+- **Author**: Yosafe Fesaha Oqbamecail
+- **Email**: [581515@stud.hvl.no](mailto:581515@stud.hvl.no)
+
+We appreciate any feedback or contributions to make these packages even better!
