@@ -55,7 +55,7 @@ jobs:
         git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
         cd ../..
 
-    - name: Add packages to pyproject.toml
+    - name: Add subpackages dependencies
       run: |
         poetry add git+${YOSAFE_SUBPACKAGE_1_GITHUB_LINK}
         poetry add git+${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
@@ -79,4 +79,4 @@ jobs:
       run: |
         source .venv/bin/activate
         pip list
-        poetry run pytest -s
+        poetry run pytest -sv
