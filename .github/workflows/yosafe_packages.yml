@@ -62,12 +62,13 @@ jobs:
         git clone ${YOSAFE_SUBPACKAGE_1_GITHUB_LINK}
         git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
         git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
-        cd ..
-        cd ..
-        poetry add git+{{ secrets.YOSAFE_SUBPACKAGE_1_GITHUB_LINK }}
-        poetry add git+{{ secrets.YOSAFE_SUBPACKAGE_2_GITHUB_LINK }}
-        poetry add git+{{ secrets.YOSAFE_SUBPACKAGE_3_GITHUB_LINK }}
-    
+        cd ../..
+
+    - name: Add packages to pyproject.toml
+      run: |
+        poetry add git+${{ secrets.YOSAFE_SUBPACKAGE_1_GITHUB_LINK }}
+        poetry add git+${{ secrets.YOSAFE_SUBPACKAGE_2_GITHUB_LINK }}
+        poetry add git+${{ secrets.YOSAFE_SUBPACKAGE_3_GITHUB_LINK }}
 
     - name: Cache dependencies
       uses: actions/cache@v4
