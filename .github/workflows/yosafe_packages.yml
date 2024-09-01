@@ -88,9 +88,15 @@ jobs:
         poetry run pytest -sv
 
 
+    - name: Removing subpackages dependencies
+      run: |
+        poetry remove yosafe_subpackage_1
+        poetry remove yosafe_subpackage_2
+        poetry remove yosafe_subpackage_3
+    
     - name: Build package
       continue-on-error: true
       run: |
         poetry build
         pip install setuptools wheel twine
-        twine upload dist/yosafe_packages-0.1.0-py3-none-any.whl --username ${{ secrets.TWINE_USERNAME }} --password ${{ secrets.TWINE_PASSWORD }}
+        twine upload dist/*
