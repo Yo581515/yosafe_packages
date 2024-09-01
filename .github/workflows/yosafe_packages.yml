@@ -14,9 +14,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-        GIT_NAME: ${{ secrets.GIT_NAME }}
-        GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-        POETRY_GITHUB_TOKKEN: ${{ secrets.POETRY_GITHUB_TOKKEN }}
         YOSAFE_SUBPACKAGE_1_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_1_GITHUB_LINK }}
         YOSAFE_SUBPACKAGE_2_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_2_GITHUB_LINK }}
         YOSAFE_SUBPACKAGE_3_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_3_GITHUB_LINK }}
@@ -47,12 +44,6 @@ jobs:
         python -m pipx ensurepath
         pipx install poetry
         poetry config virtualenvs.in-project true
-
-    - name: Set git user
-      run: |
-        git config --global user.name "${GIT_NAME}"
-        git config --global user.email "${GIT_EMAIL}"
-        git config --global user.password "${POETRY_GITHUB_TOKKEN}"
 
 
     - name: Clone packages from github
