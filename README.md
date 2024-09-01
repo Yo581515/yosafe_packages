@@ -11,7 +11,8 @@ To install the main package directly from PyPI, use the following command:
 pip install yosafe-packages
 ```
 
-If you need to install the subpackages individually, please run the following commands using Poetry:
+To install the necessary dependencies for each subpackage, please run the following commands:
+
 
 1. **Install Subpackage 1**:
 
