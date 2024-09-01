@@ -95,7 +95,6 @@ jobs:
         poetry remove yosafe_subpackage_3
     
     - name: Build package
-      continue-on-error: true
       run: |
         poetry build
         pip install setuptools wheel twine
