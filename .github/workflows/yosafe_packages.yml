@@ -88,11 +88,11 @@ jobs:
         poetry run pytest -sv
 
 
-    - name: Removing subpackages dependencies
-      run: |
-        poetry remove yosafe_subpackage_1
-        poetry remove yosafe_subpackage_2
-        poetry remove yosafe_subpackage_3
+    # - name: Removing subpackages dependencies
+    #   run: |
+    #     poetry remove yosafe_subpackage_1
+    #     poetry remove yosafe_subpackage_2
+    #     poetry remove yosafe_subpackage_3
     
     - name: Build package
       continue-on-error: true
