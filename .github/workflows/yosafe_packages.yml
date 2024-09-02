@@ -74,6 +74,7 @@ jobs:
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
+        poetry lock
         poetry install
 
 
@@ -89,7 +90,7 @@ jobs:
     #     poetry remove yosafe_subpackage_1
     #     poetry remove yosafe_subpackage_2
     #     poetry remove yosafe_subpackage_3
-    
+
     
     - name: Build package
       continue-on-error: true
