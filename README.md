@@ -15,6 +15,7 @@ To install the main package directly from PyPI, use the following command:
 pip install yosafe-packages
 ```
 
+```python
 # Example of using one of the subpackages
 from yosafe_packages import yosafe_subpackage_1
 from yosafe_packages import yosafe_subpackage_2
@@ -30,4 +31,4 @@ If you have any questions or need support, feel free to reach out:
 - **Author**: Yosafe Fesaha Oqbamecail
 - **Email**: [581515@stud.hvl.no](mailto:581515@stud.hvl.no)
 
-I appreciate any feedback or contributions to make these packages even better!
+We appreciate any feedback or contributions to make these packages even better!
