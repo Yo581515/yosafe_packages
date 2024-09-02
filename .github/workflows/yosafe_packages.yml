@@ -58,7 +58,7 @@ jobs:
         git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
         git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
         cd ../..
-        pip intsall toml
+        pip install toml
         python __init__.py
         
 
