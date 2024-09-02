@@ -38,3 +38,7 @@ def main():
     main_toml = load_pyproject_toml(main_toml_path)
     merge_dependencies(main_toml, sub_tomls)
     save_pyproject_toml(main_toml_path, main_toml)
+
+
+if __name__ == '__main__':
+    main()

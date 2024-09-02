@@ -64,7 +64,8 @@ jobs:
         poetry lock
         source .venv/bin/activate
         pip install toml
-        python __init__.py
+        python src/yosafe_packages/merge_function/merge_dependencies.py 
+        pip list
 
     - name: Cache dependencies
       uses: actions/cache@v4
