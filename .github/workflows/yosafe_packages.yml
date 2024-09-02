@@ -65,14 +65,16 @@ jobs:
         source .venv/bin/activate
         pip install toml
         python src/yosafe_packages/merge_function/merge_dependencies.py 
+        pip -V
         pip list
+        
 
     - name: Cache dependencies
       uses: actions/cache@v4
       id: cache
       with:
         path: ./.venv
-        key: venv-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
+        key: venv-${{ hashFiles('**/poetry.lock') }}
 
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
@@ -88,13 +90,7 @@ jobs:
         poetry run pytest -sv
 
 
-    # - name: Removing subpackages dependencies
-    #   run: |
-    #     poetry remove yosafe_subpackage_1
-    #     poetry remove yosafe_subpackage_2
-    #     poetry remove yosafe_subpackage_3
-
-    
+        
     - name: Build package
       continue-on-error: true
       run: |
