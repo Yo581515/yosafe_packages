@@ -58,11 +58,13 @@ jobs:
         git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
         git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
         cd ../..
+
+    - name: Install toml package
+      run: |
         poetry lock
         source .venv/bin/activate
         pip install toml
         python __init__.py
-        
 
     - name: Cache dependencies
       uses: actions/cache@v4
