@@ -3,6 +3,10 @@
 
 Welcome to the YoSafe Packages! This repository provides a collection of Python packages designed to enhance your development workflow. You can also find this project on PyPI: [YoSafe Packages on PyPI](https://pypi.org/project/yosafe-packages/).
 
+## Project Structure
+
+The tree structure of this project is available in the [tree.txt](tree.txt) file.
+
 ## Installation
 
 To install the main package directly from PyPI, use the following command:
