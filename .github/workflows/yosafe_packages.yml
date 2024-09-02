@@ -58,6 +58,8 @@ jobs:
         git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
         git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
         cd ../..
+        poetry lock
+        source .venv/bin/activate
         pip install toml
         python __init__.py
         
@@ -72,14 +74,12 @@ jobs:
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: |
-        poetry lock
         poetry install
 
 
 
     - name: Test with pytest
       run: |
-        source .venv/bin/activate
         pip list
         poetry run pytest -sv
 
@@ -89,6 +89,7 @@ jobs:
     #     poetry remove yosafe_subpackage_1
     #     poetry remove yosafe_subpackage_2
     #     poetry remove yosafe_subpackage_3
+    
     
     - name: Build package
       continue-on-error: true
