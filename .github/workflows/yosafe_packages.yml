@@ -61,9 +61,9 @@ jobs:
 
     - name: Add subpackages dependencies
       run: |
-        poetry add git+${YOSAFE_SUBPACKAGE_1_GITHUB_LINK}
-        poetry add git+${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
-        poetry add git+${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
+        poetry run poetry install --directory src/yosafe_packages/yosafe_subpackage_1
+        poetry run poetry install --directory src/yosafe_packages/yosafe_subpackage_2
+        poetry run poetry install --directory src/yosafe_packages/yosafe_subpackage_3
         
 
     - name: Cache dependencies
@@ -88,11 +88,11 @@ jobs:
         poetry run pytest -sv
 
 
-    - name: Removing subpackages dependencies
-      run: |
-        poetry remove yosafe_subpackage_1
-        poetry remove yosafe_subpackage_2
-        poetry remove yosafe_subpackage_3
+    # - name: Removing subpackages dependencies
+    #   run: |
+    #     poetry remove yosafe_subpackage_1
+    #     poetry remove yosafe_subpackage_2
+    #     poetry remove yosafe_subpackage_3
     
     - name: Build package
       continue-on-error: true
