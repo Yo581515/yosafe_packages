@@ -1,15 +1,20 @@
+[build-system]
+requires = [ "poetry-core",]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "yosafe-packages"
 version = "0.2.0"
 description = ""
-authors = ["Yo581515 <581515@stud.hvl.no>"]
+authors = [ "Yo581515 <581515@stud.hvl.no>",]
 readme = "README.md"
-packages = [{include = "yosafe_packages", from = "src"}]
+[[tool.poetry.packages]]
+include = "yosafe_packages"
+from = "src"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+pytest = "^8.3.2"
+requests = "^2.32.3"
 
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.dev-dependencies]

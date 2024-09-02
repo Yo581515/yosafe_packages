@@ -227,64 +227,7 @@ h2 = ["h2 (>=4,<5)"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
 
-[[package]]
-name = "yosafe-subpackage-1"
-version = "0.1.0"
-description = ""
-optional = false
-python-versions = "^3.12"
-files = []
-develop = false
-
-[package.dependencies]
-pytest = "^8.3.2"
-requests = "^2.32.3"
-
-[package.source]
-type = "git"
-url = "https://github.com/Yo581515/yosafe_subpackage_1.git"
-reference = "HEAD"
-resolved_reference = "e673fd0fa884925eadb5c2d4f40ef7e15e6254ba"
-
-[[package]]
-name = "yosafe-subpackage-2"
-version = "0.1.0"
-description = ""
-optional = false
-python-versions = "^3.12"
-files = []
-develop = false
-
-[package.dependencies]
-pytest = "^8.3.2"
-requests = "^2.32.3"
-
-[package.source]
-type = "git"
-url = "https://github.com/Yo581515/yosafe_subpackage_2.git"
-reference = "HEAD"
-resolved_reference = "25ae372d4dd2855ca4b82467c0918e173c40395f"
-
-[[package]]
-name = "yosafe-subpackage-3"
-version = "0.1.0"
-description = ""
-optional = false
-python-versions = "^3.12"
-files = []
-develop = false
-
-[package.dependencies]
-pytest = "^8.3.2"
-requests = "^2.32.3"
-
-[package.source]
-type = "git"
-url = "https://github.com/Yo581515/yosafe_subpackage_3.git"
-reference = "HEAD"
-resolved_reference = "715c01bea5a369c938e8f56845214efc30963fed"
-
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "68876d1a73c73f91119daf5a1648e2346a5cf7e04c5e15db783aa199232fe60e"
+content-hash = "85bebc2784fe2d796f66bded684dc10cdb4b52b0a55e081753800f9db54a4e14"
