@@ -123,7 +123,9 @@ jobs:
         unzip *.whl -d extracted_directory
         cd extracted_directory
         ls
-        cd ../..
+        cd ..
+        rm -fr extracted_directory
+        cd ..
 
     - name: Publish package
       continue-on-error: true
