@@ -166,3 +166,4 @@ cython_debug/
 yosafe_subpackage_1/
 yosafe_subpackage_2/
 yosafe_subpackage_3/
+merge_function/

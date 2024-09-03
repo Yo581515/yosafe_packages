@@ -8,7 +8,11 @@ version = "0.8.0"
 description = ""
 authors = ["Yo581515 <581515@stud.hvl.no>"]
 readme = "README.md"
-include = ["**/yosafe_packages/**/*"]
+include = [
+    "src/yosafe_packages/yosafe_subpackage_1",
+    "src/yosafe_packages/yosafe_subpackage_2",
+    "src/yosafe_packages/yosafe_subpackage_3"
+]
 
 [[tool.poetry.packages]]
 include = "yosafe_packages"
