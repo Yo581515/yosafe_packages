@@ -82,6 +82,7 @@ jobs:
         rm -fr yosafe_subpackage_3
         mv temp_dir/* .
         rm -fr temp_dir
+        ls
         cd ../..
 
     - name: Lock dependencies
@@ -113,6 +114,7 @@ jobs:
     - name: Build package
       continue-on-error: true
       run: |
+        poetry lock
         poetry build
         pip install setuptools wheel twine
         twine upload dist/*
