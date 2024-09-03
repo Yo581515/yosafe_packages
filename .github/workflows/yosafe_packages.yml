@@ -116,6 +116,9 @@ jobs:
       run: |
         poetry lock
         poetry build
+
+    - name: Extract package
+      run: |
         cd dist
         ls
         unzip *.whl -d extracted_directory
