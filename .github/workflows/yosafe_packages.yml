@@ -116,5 +116,14 @@ jobs:
       run: |
         poetry lock
         poetry build
+        cd dist
+        ls
+        unzip *.whl -d extracted_directory
+        cd extracted_directory
+        ls
+        cd ../..
+
+    - name: Publish package
+      run: |
         pip install setuptools wheel twine
         twine upload dist/*
