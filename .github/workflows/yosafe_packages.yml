@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  install-dependencies:
+  test-package-and-publish-to-pypi:
     runs-on: ubuntu-latest
 
     env:
