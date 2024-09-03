@@ -73,7 +73,7 @@ jobs:
       run: |
         cd src
         cd yosafe_packages
-        mk dir temp_dir
+        mkdir temp_dir
         cp -r yosafe_subpackage_1/src/yosafe_subpackage_1/ temp_dir/
         cp -r yosafe_subpackage_2/src/yosafe_subpackage_2/ temp_dir/
         cp -r yosafe_subpackage_3/src/yosafe_subpackage_3/ temp_dir/
