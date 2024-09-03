@@ -116,7 +116,7 @@ jobs:
         poetry lock
         poetry build
 
-    - name: Extract package
+    - name: Extract package just to see what's inside
       run: |
         cd dist
         ls
