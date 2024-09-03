@@ -1,91 +1,97 @@
-Folder PATH listing for volume Windows
-Volume serial number is E832-0BC4
-C:.
-\---yosafe_packages
++---yosafe_packages
+|   |   .gitignore
+|   |   poetry.lock
+|   |   pyproject.toml
+|   |   README.md
+|   |   tree.txt
+|   |   
+|   +---.github
+|   |   \---workflows
+|   |           yosafe_packages.yml
+|   |               
+|   +---src
+|   |   \---yosafe_packages
+|   |       +---merge_function
+|   |       |       merge_dependencies.py
+|   |       |       __init__.py
+|   |       |       
+|   |       +---yosafe_subpackage_1
+|   |       |       yosafe_subpackage_1_functions.py
+|   |       |       yosafe_subpackage_1_functions_2.py
+|   |       |       __init__.py
+|   |       |       
+|   |       +---yosafe_subpackage_2
+|   |       |       yosafe_subpackage_2_functions.py
+|   |       |       __init__.py
+|   |       |       
+|   |       \---yosafe_subpackage_3
+|   |               yosafe_subpackage_3_functions.py
+|   |               __init__.py
+|   |               
+|   \---tests
+|       |   test_yosafe_packages.py
+|       |   __init__.py
+
+
+
+
+SUB PACKAGES
+
++---yosafe_subpackage_1
+|   |   .gitignore
+|   |   poetry.lock
+|   |   pyproject.toml
+|   |   README.md
+|   |   
+|   +---.github
+|   |   \---workflows
+|   |           yosafe_subpackage_1_workflow.yml
+|   |           
+|   +---src
+|   |   \---yosafe_subpackage_1
+|   |           yosafe_subpackage_1_functions.py
+|   |           yosafe_subpackage_1_functions_2.py
+|   |           __init__.py
+|   |           
+|   \---tests
+|           test_yosafe_subpackage_1.py
+|           __init__.py
+|           
++---yosafe_subpackage_2
+|   |   .gitignore
+|   |   poetry.lock
+|   |   pyproject.toml
+|   |   README.md
+|   |   
+|   +---.github
+|   |   \---workflows
+|   |           yosafe_subpackage_1_workflow.yml
+|   |           
+|   +---src
+|   |   \---yosafe_subpackage_2
+|   |           yosafe_subpackage_2_functions.py
+|   |           __init__.py
+|   |           
+|   \---tests
+|           test_yosafe_subpackage_2.py
+|           __init__.py
+|           
+\---yosafe_subpackage_3
     |   .gitignore
     |   poetry.lock
     |   pyproject.toml
     |   README.md
-    |   tree.txt
     |   
     +---.github
     |   \---workflows
-    |           yosafe_packages.yml
-    |               
-    +---src
-    |   |   __init__.py
-    |   |   
-    |   +---yosafe_packages
-    |   |   +---merge_function
-    |   |   |   |   merge_dependencies.py
-    |   |   |   |   __init__.py
-    |   |   |           
-    |   |   +---yosafe_subpackage_1
-    |   |   |   |   .gitignore
-    |   |   |   |   poetry.lock
-    |   |   |   |   pyproject.toml
-    |   |   |   |   README.md
-    |   |   |   |   __init__.py
-    |   |   |   |   
-    |   |   |   +---.github
-    |   |   |   |   \---workflows
-    |   |   |   |           yosafe_subpackage_1_workflow.yml
-    |   |   |   |           
-    |   |   |   +---src
-    |   |   |   |   |   __init__.py
-    |   |   |   |   |   
-    |   |   |   |   +---yosafe_subpackage_1
-    |   |   |   |   |   |   yosafe_subpackage_1_functions.py
-    |   |   |   |   |   |   __init__.py
-    |   |   |   |           
-    |   |   |   +---tests
-    |   |   |   |   |   test_yosafe_subpackage_1.py
-    |   |   |   |   |   __init__.py
-    |   |   |           
-    |   |   +---yosafe_subpackage_2
-    |   |   |   |   .gitignore
-    |   |   |   |   poetry.lock
-    |   |   |   |   pyproject.toml
-    |   |   |   |   README.md
-    |   |   |   |   __init__.py
-    |   |   |   |   
-    |   |   |   +---.github
-    |   |   |   |   \---workflows
-    |   |   |   |           yosafe_subpackage_1_workflow.yml
-    |   |   |   |           
-    |   |   |   +---src
-    |   |   |   |   |   __init__.py
-    |   |   |   |   |   
-    |   |   |   |   +---yosafe_subpackage_2
-    |   |   |   |   |   |   yosafe_subpackage_2_functions.py
-    |   |   |   |   |   |   __init__.py
-    |   |   |   |           
-    |   |   |   +---tests
-    |   |   |   |   |   test_yosafe_subpackage_2.py
-    |   |   |   |   |   __init__.py
-    |   |   |           
-    |   |   \---yosafe_subpackage_3
-    |   |       |   .gitignore
-    |   |       |   poetry.lock
-    |   |       |   pyproject.toml
-    |   |       |   README.md
-    |   |       |   __init__.py
-    |   |       |   
-    |   |       +---.github
-    |   |       |   \---workflows
-    |   |       |           yosafe_subpackage_3_workflow.yml
-    |   |       |           
-    |   |       +---src
-    |   |       |   |   __init__.py
-    |   |       |   |   
-    |   |       |   +---yosafe_subpackage_3
-    |   |       |   |   |   yosafe_subpackage_3_functions.py
-    |   |       |   |   |   __init__.py
-    |   |       |           
-    |   |       +---tests
-    |   |       |   |   test_yosafe_subpackage_3.py
-    |   |       |   |   __init__.py
+    |           yosafe_subpackage_3_workflow.yml
     |           
-    +---tests
-    |   |   test_yosafe_packages.py
-    |   |   __init__.py
+    +---src
+    |   \---yosafe_subpackage_3
+    |           yosafe_subpackage_3_functions.py
+    |           __init__.py
+    |           
+    \---tests
+            test_yosafe_subpackage_3.py
+            __init__.py
+            
