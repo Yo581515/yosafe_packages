@@ -17,9 +17,9 @@ pip install yosafe-packages
 
 ```python
 # Example of using one of the subpackages
-from yosafe_packages import yosafe_subpackage_1
-from yosafe_packages import yosafe_subpackage_2
-from yosafe_packages import yosafe_subpackage_3
+from from yosafe_packages.yosafe_subpackage_1 import *
+from from yosafe_packages.yosafe_subpackage_2 import *
+from from yosafe_packages.yosafe_subpackage_3 import *
 
 # Your code here
 ```
