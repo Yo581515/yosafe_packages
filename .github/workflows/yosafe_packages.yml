@@ -65,8 +65,8 @@ jobs:
         source .venv/bin/activate
         pip install toml
         python src/yosafe_packages/merge_function/merge_dependencies.py 
-        pip -V
-        pip list
+        #pip -V
+        #pip list
 
 
     - name: Moving yosafe_packages/yosafe_subpackage_x/src/yosafe_subpackage_x to yosafe_packages/
@@ -82,13 +82,13 @@ jobs:
         rm -fr yosafe_subpackage_3
         mv temp_dir/* .
         rm -fr temp_dir
-        ls
+        #ls
         cd ../..
 
     - name: Lock dependencies
       run: |
         poetry lock
-        pip list
+        #pip list
 
     - name: Cache dependencies
       uses: actions/cache@v4
@@ -106,7 +106,7 @@ jobs:
 
     - name: Test with pytest
       run: |
-        pip list
+        #pip list
         poetry run pytest -sv
 
 
@@ -118,14 +118,15 @@ jobs:
 
     - name: Extract package just to see what's inside
       run: |
-        cd dist
-        ls
-        unzip *.whl -d extracted_directory
-        cd extracted_directory
-        ls
-        cd ..
-        rm -fr extracted_directory
-        cd ..
+        echo "Extracting package commented out for now"
+        #cd dist
+        #ls
+        #unzip *.whl -d extracted_directory
+        #cd extracted_directory
+        #ls
+        #cd ..
+        #rm -fr extracted_directory
+        #cd ..
 
     - name: Publish package
       continue-on-error: true
