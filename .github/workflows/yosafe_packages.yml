@@ -112,7 +112,6 @@ jobs:
 
         
     - name: Build package
-      continue-on-error: true
       run: |
         poetry lock
         poetry build
@@ -128,5 +127,6 @@ jobs:
 
     - name: Publish package
       run: |
+        continue-on-error: true
         pip install setuptools wheel twine
         twine upload dist/*
