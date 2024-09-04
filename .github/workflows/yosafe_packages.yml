@@ -68,6 +68,7 @@ jobs:
         pip install packaging
         python src/yosafe_packages/merge_function/merge_dependencies.py 
         #pip -V
+        cat pyproject.toml
         #pip list
 
 
