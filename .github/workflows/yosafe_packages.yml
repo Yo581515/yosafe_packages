@@ -135,4 +135,9 @@ jobs:
       continue-on-error: true
       run: |
         pip install setuptools wheel twine
+
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          poetry version patch
+
         twine upload dist/*
