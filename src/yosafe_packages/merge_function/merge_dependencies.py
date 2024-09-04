@@ -10,6 +10,13 @@ def save_pyproject_toml(path, data):
     with open(path, 'w') as f:
         toml.dump(data, f)
 
+def get_next_major(version):
+    """Return the next major version."""
+    major = version.major
+    minor = version.minor
+    # Create the next major version as major + 1 and minor = 0
+    return Version(f"{major + 1}.0.0")
+
 def update_version_range(existing_range, new_version):
     """Update the version range with the new version."""
     try:
@@ -67,10 +74,12 @@ def merge_dependencies(main_toml, sub_tomls):
 
     # Convert the min/max version ranges into the required format and add to main dependencies
     for dep, (min_version, max_version) in dependency_versions.items():
-        main_dependencies[dep] = f">={min_version},<{max_version.next_major()}"
+        next_major_version = get_next_major(max_version)
+        main_dependencies[dep] = f">={min_version},<{next_major_version}"
 
     for dep, (min_version, max_version) in dev_dependency_versions.items():
-        main_dev_dependencies[dep] = f">={min_version},<{max_version.next_major()}"
+        next_major_version = get_next_major(max_version)
+        main_dev_dependencies[dep] = f">={min_version},<{next_major_version}"
 
     # Update the main TOML with merged dependencies
     main_toml['tool']['poetry']['dependencies'] = main_dependencies
