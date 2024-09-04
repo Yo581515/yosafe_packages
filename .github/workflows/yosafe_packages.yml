@@ -112,8 +112,13 @@ jobs:
         pip list
         poetry run pytest -sv
 
-
         
+    - name: check trigger
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        poetry version patch
+
+
     - name: Build package
       run: |
         poetry lock
@@ -130,12 +135,6 @@ jobs:
         #cd ..
         #rm -fr extracted_directory
         #cd ..
-
-    - name: check trigger
-      if: github.event_name == 'workflow_dispatch'
-      run: |
-        poetry version patch
-
 
 
     - name: Publish to PyPI
