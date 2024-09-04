@@ -131,13 +131,15 @@ jobs:
         #rm -fr extracted_directory
         #cd ..
 
-    - name: Publish package
+    - name: check trigger
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        poetry version patch
+
+
+
+    - name: Publish to PyPI
       continue-on-error: true
       run: |
-        pip install setuptools wheel twine
-
-        if: github.event_name == 'workflow_dispatch'
-        run: |
-          poetry version patch
-
+        pip install setuptools wheel twine  
         twine upload dist/*
