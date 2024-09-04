@@ -11,18 +11,15 @@ def save_pyproject_toml(path, data):
         toml.dump(data, f)
 
 def get_min_version(version1, version2):
-    """Returns the minimum version between two version strings without caret format."""
+    """Returns the minimum version between two version strings in caret format."""
     try:
-        # Strip the caret if present and convert to Version objects
         v1 = Version(version1.lstrip('^'))
         v2 = Version(version2.lstrip('^'))
-        # Select the least version
-        min_version = min(v1, v2)
-        # Return the minimum version as a string
-        return str(min_version)
+        min_version = min(v1, v2)  # Select the least version
+        return f"^{min_version}"
     except InvalidVersion:
-        # If versions can't be parsed correctly, return the first one as is (simple fallback)
-        return version1.lstrip('^')
+        # If versions can't be parsed correctly, return one as is (simple fallback)
+        return f"^{version1}" if not version1.startswith('^') else version1
 
 def merge_dependencies(main_toml, sub_tomls):
     """Merge dependencies from sub-tomls into the main_toml."""
@@ -34,20 +31,19 @@ def merge_dependencies(main_toml, sub_tomls):
         sub_dependencies = sub_toml.get('tool', {}).get('poetry', {}).get('dependencies', {})
         sub_dev_dependencies = sub_toml.get('tool', {}).get('poetry', {}).get('dev-dependencies', {})
 
-        # Merge dependencies with the least version without caret format
+        # Merge dependencies with the least version and caret format
         for dep, version in sub_dependencies.items():
             if dep in main_dependencies:
                 main_dependencies[dep] = get_min_version(main_dependencies[dep], version)
             else:
-                # Add the version as is, without caret
-                main_dependencies[dep] = version.lstrip('^')
+                main_dependencies[dep] = f"^{version}" if not version.startswith('^') else version
 
         # Merge dev dependencies in the same way
         for dep, version in sub_dev_dependencies.items():
             if dep in main_dev_dependencies:
                 main_dev_dependencies[dep] = get_min_version(main_dev_dependencies[dep], version)
             else:
-                main_dev_dependencies[dep] = version.lstrip('^')
+                main_dev_dependencies[dep] = f"^{version}" if not version.startswith('^') else version
 
     # Update the main TOML with merged dependencies
     main_toml['tool']['poetry']['dependencies'] = main_dependencies
