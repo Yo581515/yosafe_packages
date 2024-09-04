@@ -93,17 +93,17 @@ jobs:
         poetry lock
         #pip list
 
-    - name: Cache dependencies
-      uses: actions/cache@v4
-      id: cache
-      with:
-        path: ./.venv
-        key: venv-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
+    # - name: Cache dependencies
+    #   uses: actions/cache@v4
+    #   id: cache
+    #   with:
+    #     path: ./.venv
+    #     key: venv-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
 
-    - name: Install Poetry dependencies
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: |
-        poetry install
+    # - name: Install Poetry dependencies
+    #   if: steps.cache.outputs.cache-hit != 'true'
+    #   run: |
+    #     poetry install
 
 
 
