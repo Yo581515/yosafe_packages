@@ -95,7 +95,7 @@ jobs:
       id: cache
       with:
         path: ./.venv
-        key: venv-${{ hashFiles('**/poetry.lock') }}-${{ hashFiles('**/pyproject.toml') }}
+        key: venv-${{ hashFiles('**/poetry.lock') }}
 
     - name: Install Poetry dependencies
       if: steps.cache.outputs.cache-hit != 'true'
