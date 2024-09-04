@@ -13,13 +13,13 @@ def save_pyproject_toml(path, data):
 def get_min_version(version1, version2):
     """Returns the minimum version between two version strings in caret format."""
     try:
-        v1 = Version(version1)
-        v2 = Version(version2)
+        v1 = Version(version1.lstrip('^'))
+        v2 = Version(version2.lstrip('^'))
         min_version = min(v1, v2)  # Select the least version
-        return f"^{min_version.major}.{min_version.minor}.0"  # Format with caret for the major.minor range
+        return f"^{min_version}"
     except InvalidVersion:
         # If versions can't be parsed correctly, return one as is (simple fallback)
-        return version1
+        return f"^{version1}" if not version1.startswith('^') else version1
 
 def merge_dependencies(main_toml, sub_tomls):
     """Merge dependencies from sub-tomls into the main_toml."""
@@ -45,6 +45,7 @@ def merge_dependencies(main_toml, sub_tomls):
             else:
                 main_dev_dependencies[dep] = f"^{version}" if not version.startswith('^') else version
 
+    # Update the main TOML with merged dependencies
     main_toml['tool']['poetry']['dependencies'] = main_dependencies
     main_toml['tool']['poetry']['dev-dependencies'] = main_dev_dependencies
 
