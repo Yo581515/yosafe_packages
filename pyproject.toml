@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "yosafe-packages"
-version = "0.11.14"
+version = "0.11.15"
 description = ""
 authors = [ "Yo581515 <581515@stud.hvl.no>",]
 readme = "README.md"
