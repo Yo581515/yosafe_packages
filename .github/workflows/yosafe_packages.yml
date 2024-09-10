@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-        YOSAFE_SUBPACKAGE_1_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_1_GITHUB_LINK }}
-        YOSAFE_SUBPACKAGE_2_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_2_GITHUB_LINK }}
-        YOSAFE_SUBPACKAGE_3_GITHUB_LINK: ${{ secrets.YOSAFE_SUBPACKAGE_3_GITHUB_LINK }}
+        G_SUBPACKAGE_1_REPOSITORY: ${{ secrets.G_SUBPACKAGE_1_REPOSITORY }}
+        G_SUBPACKAGE_2_REPOSITORY: ${{ secrets.G_SUBPACKAGE_2_REPOSITORY }}
+        G_SUBPACKAGE_3_REPOSITORY: ${{ secrets.G_SUBPACKAGE_3_REPOSITORY }}
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
 
@@ -52,9 +52,9 @@ jobs:
       run: |
         cd src
         cd yosafe_packages
-        git clone ${YOSAFE_SUBPACKAGE_1_GITHUB_LINK}
-        git clone ${YOSAFE_SUBPACKAGE_2_GITHUB_LINK}
-        git clone ${YOSAFE_SUBPACKAGE_3_GITHUB_LINK}
+        git clone https://github.com/$G_NAME/$G_SUBPACKAGE_1_REPOSITORY.git
+        git clone https://github.com/$G_NAME/$G_SUBPACKAGE_2_REPOSITORY.git
+        git clone https://github.com/$G_NAME/$G_SUBPACKAGE_3_REPOSITORY.git
         cd ../..
 
     - name: Install toml package
@@ -68,7 +68,6 @@ jobs:
         cat pyproject.toml
         pip uninstall -y toml
         pip uninstall -y packaging
-        #pip list
 
 
     - name: Moving yosafe_packages/yosafe_subpackage_x/src/yosafe_subpackage_x to yosafe_packages/
@@ -76,15 +75,14 @@ jobs:
         cd src
         cd yosafe_packages
         mkdir temp_dir
-        cp -r yosafe_subpackage_1/src/yosafe_subpackage_1/ temp_dir/
-        cp -r yosafe_subpackage_2/src/yosafe_subpackage_2/ temp_dir/
-        cp -r yosafe_subpackage_3/src/yosafe_subpackage_3/ temp_dir/
-        rm -fr yosafe_subpackage_1
-        rm -fr yosafe_subpackage_2
-        rm -fr yosafe_subpackage_3
+        cp -r $G_SUBPACKAGE_1_REPOSITORY/src/$G_SUBPACKAGE_1_REPOSITORY/ temp_dir/
+        cp -r $G_SUBPACKAGE_2_REPOSITORY/src/$G_SUBPACKAGE_2_REPOSITORY/ temp_dir/
+        cp -r $G_SUBPACKAGE_3_REPOSITORY/src/$G_SUBPACKAGE_3_REPOSITORY/ temp_dir/
+        rm -fr $G_SUBPACKAGE_1_REPOSITORY
+        rm -fr $G_SUBPACKAGE_2_REPOSITORY
+        rm -fr $G_SUBPACKAGE_3_REPOSITORY
         mv temp_dir/* .
         rm -fr temp_dir
-        #ls
         cd ../..
 
 
@@ -96,8 +94,6 @@ jobs:
 
     - name: Test with pytest
       run: |
-        source .venv/bin/activate
-        pip list
         poetry run pytest -sv
 
 
@@ -105,18 +101,6 @@ jobs:
       run: |
         poetry lock
         poetry build
-
-    - name: Extract package just to see what's inside
-      run: |
-        echo "Extracting package commented out for now"
-        #cd dist
-        #ls
-        #unzip *.whl -d extracted_directory
-        #cd extracted_directory
-        #ls
-        #cd ..
-        #rm -fr extracted_directory
-        #cd ..
 
 
     - name: Publish to PyPI
