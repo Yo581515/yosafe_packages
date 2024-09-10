@@ -66,8 +66,8 @@ jobs:
         python src/yosafe_packages/merge_function/merge_dependencies.py 
         #pip -V
         cat pyproject.toml
-        pip uninstall toml
-        pip uninstall packaging
+        pip uninstall -y toml
+        pip uninstall -y packaging
         #pip list
 
 
