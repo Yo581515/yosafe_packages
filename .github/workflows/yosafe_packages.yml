@@ -15,6 +15,7 @@ jobs:
         G_SUBPACKAGE_1_REPOSITORY: ${{ secrets.G_SUBPACKAGE_1_REPOSITORY }}
         G_SUBPACKAGE_2_REPOSITORY: ${{ secrets.G_SUBPACKAGE_2_REPOSITORY }}
         G_SUBPACKAGE_3_REPOSITORY: ${{ secrets.G_SUBPACKAGE_3_REPOSITORY }}
+        G_NAME: ${{ secrets.G_NAME }}
         TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
 
