@@ -96,6 +96,7 @@ jobs:
 
     - name: Test with pytest
       run: |
+        source .venv/bin/activate
         pip list
         poetry run pytest -sv
 
